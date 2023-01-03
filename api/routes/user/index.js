@@ -4,8 +4,8 @@ import { getUser} from "../../controllers/userController.js"
 
 const router = express.Router();
 
-//router.get('/', Authorization, getAll)
-router.get('/:id', Authorization, getUser)
+router.get('/', Authorization, getUser)
+//router.get('/:id', Authorization, getUser)
 //router.put('/:id', Authorization, updateUser);
 
 
