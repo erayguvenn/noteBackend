@@ -27,13 +27,14 @@ async function getUser(req, res){
         })
     }
 }
-async function putUser(req, res){
+async function updateUser(req, res){
     try{
     
         const { userId } = req.payload;
         const { name,surname} = changeUserScheme.validateAsync(req.body)
 
-        const [users] = await dbConnection.query("UPDATE user set name=?,surname = ? WHERE id = ?", [name,surname,userId]);
+        await dbConnection.query("UPDATE user set name=?,surname = ? WHERE id = ?", [name,surname,userId]);
+        const [users] = await dbConnection.query("SELECT name,surname,email FROM user WHERE id = ?", [userId]);
 
         if(users.length == 0)
             return res.status(404).json({message:"Kullanıcı bulunamadı"});
@@ -48,4 +49,4 @@ async function putUser(req, res){
     }
 }
 
-export {getUser}
+export {getUser,updateUser}
