@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "3.127.53.229",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "My Remote",
+            "database": "baraninsitesi",
+            "username": "uzak",
+            "password": "uzakpc"
+        }
+    ]
+}
