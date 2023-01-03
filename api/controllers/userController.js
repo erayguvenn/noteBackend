@@ -48,4 +48,4 @@ async function putUser(req, res){
     }
 }
 
-export {getUser,putUser}
+export {getUser}
