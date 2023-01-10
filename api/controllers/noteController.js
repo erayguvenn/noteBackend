@@ -4,8 +4,19 @@ import Joi from "joi"
 async function getAll(req, res){
     try{
         const { userId } = req.payload;
+        let search = req.query.search
+        if(search == null) {
+            const [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ?", [userId]);
+            console.log("Get all notes")
 
-        const [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ?", [userId]);
+        }
+        else{
+            const [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ? AND ( title = %?% OR body = %?% )", [userId,search,search])
+            console.log("Get searched notes")
+
+        }
+        
+        
 
         return res.json(notesFromUser);
     }catch(err){
@@ -41,6 +52,13 @@ const noteScheme = Joi.object({
     title:Joi.string().max(200).required(),
     body:Joi.string()
 });
+
+async function getNoteWhere(req,res){
+
+
+
+
+}
 
 async function createNote(req,res){
     try{

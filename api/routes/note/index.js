@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/', Authorization, getAll)
 router.get('/:id', Authorization, getSingle)
+router.get('/:queryParam')
 
 router.post('/', Authorization, createNote);
 router.put('/:id', Authorization, updateNote);
