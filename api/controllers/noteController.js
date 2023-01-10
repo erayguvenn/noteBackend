@@ -5,13 +5,15 @@ async function getAll(req, res){
     try{
         const { userId } = req.payload;
         let search = req.query.search
+
+        let notesFromUser;
         if(search == null) {
-            const [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ?", [userId]);
+             [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ?", [userId]);
             console.log("Get all notes")
 
         }
         else{
-            const [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ? AND ( title = %?% OR body = %?% )", [userId,search,search])
+             [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ? AND ( title = %?% OR body = %?% )", [userId,search,search])
             console.log("Get searched notes")
 
         }
