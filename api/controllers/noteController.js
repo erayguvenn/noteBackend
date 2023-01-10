@@ -52,7 +52,7 @@ async function getSingle(req, res){
 
 const noteScheme = Joi.object({
     title:Joi.string().max(200).required(),
-    body:Joi.string().optional()
+    body:Joi.string().allow("")
 });
 
 async function getNoteWhere(req,res){
