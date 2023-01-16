@@ -9,7 +9,7 @@ async function getAll(req, res){
         let notesFromUser;
         if(search == null) {
              [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ?", [userId]);
-            console.log("Get all notes")
+            console.log("Get notes"+ notesFromUser)
 
         }
         else{
