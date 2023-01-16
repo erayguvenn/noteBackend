@@ -13,7 +13,8 @@ async function getAll(req, res){
 
         }
         else{
-             [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ? AND ( title LIKE '%'?'%' OR body LIKE '%'?'%' )", [userId,search,search])
+            let searchparam = "%"+search+"%";
+             [notesFromUser] = await dbConnection.query("SELECT * FROM note WHERE userid = ? AND ( title LIKE ? OR body LIKE ? )", [userId,searchparam,searchparam])
             console.log("Get searched notes")
 
         }
