@@ -9,7 +9,7 @@ async function keepAlive(){
     console.log("DB bağlantısı sağlandı");
 }
 while (true) {
-    await keepAlive();
+    keepAlive();
     await new Promise(resolve => setTimeout(resolve, 1000 * 60 * 5));
 }
 export default connection;
