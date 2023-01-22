@@ -10,6 +10,6 @@ async function keepAlive(){
 }
 while (true) {
     keepAlive();
-    await new Promise(resolve => setTimeout(resolve, 1000 * 60 * 5));
+    new Promise(resolve => setTimeout(resolve, 1000 * 60 * 5));
 }
 export default connection;
