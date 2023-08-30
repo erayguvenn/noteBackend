@@ -8,7 +8,7 @@ const connection = await mysql.createConnection(process.env.DB_CONNECTION);
 setInterval(keepAlive, 1000 * 60 * 5);
 
 async function keepAlive(){
-    await connection.query("SELECT 1");
+    await connection.query("SELECT 1 FROM user WHERE 1;");
     console.log("DB bağlantısı sağlandı");
 }
 
